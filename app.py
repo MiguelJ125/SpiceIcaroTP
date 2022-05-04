@@ -486,7 +486,7 @@ link = "https://www.tensorflow.org/hub/tutorials/spice?hl=es-419&authuser=2"
 iface = gr.Interface(
     fn=main, 
     title= "Trabajo Práctico N°3 - Detección de tono con SPICE",
-	description="Implementación de Modelo con GitHub + Hugging Face🤗-- 🔊✅ " + "Basado en: " + link, 
+    description="Implementación de Modelo con GitHub + Hugging Face🤗-- 🔊✅ " + "Basado en: " + link, 
     inputs = [gr.inputs.Audio(source= "microphone" , type="filepath",label="Ingrese Audio")],
     outputs= [gr.outputs.Audio(label="Audio Original"), 
               gr.outputs.Plot(type="auto",label="Gráfico de Frecuencias"),
