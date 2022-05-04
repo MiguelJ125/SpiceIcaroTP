@@ -481,8 +481,12 @@ def main(audio):
 
   return converted_audio_file, fig1, fig2, fig3, fig4,fig5, bpm, best_notes_and_rests, partitura, wav_from_created_midi
 
+link = "https://www.tensorflow.org/hub/tutorials/spice?hl=es-419&authuser=2"
+
 iface = gr.Interface(
     fn=main, 
+    title= "Trabajo Práctico N°3 - Detección de tono con SPICE",
+	description="Implementación de Modelo con GitHub + Hugging Face🤗-- 🔊✅ " + "Basado en: " + link, 
     inputs = [gr.inputs.Audio(source= "microphone" , type="filepath",label="Ingrese Audio")],
     outputs= [gr.outputs.Audio(label="Audio Original"), 
               gr.outputs.Plot(type="auto",label="Gráfico de Frecuencias"),
