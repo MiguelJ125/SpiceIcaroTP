@@ -456,7 +456,7 @@ def main(audio):
               );
       })
       """.replace('{{DIV_ID}}',DIV_ID).replace('{{data}}',json.dumps(xml))
-      #display(Javascript(script))
+      display(Javascript(script))
       return a
 
   # rendering the music score
@@ -490,17 +490,17 @@ iface = gr.Interface(
     title= "Trabajo Práctico N°3 - Detección de tono con SPICE",
     description="Implementación de Modelo con GitHub + Hugging Face🤗-- 🔊✅ " + "Basado en: " + link, 
     inputs = [gr.inputs.Audio(source= "microphone" , type="filepath",label="Ingrese Audio")],
-    outputs= [gr.outputs.Audio(label="Audio Original")], 
-              #gr.outputs.Plot(type="auto",label="Gráfico de Frecuencias"),
-              #gr.outputs.Plot(type="auto",label="Especto"),
-              #gr.outputs.Plot(type="auto",label="Pitch Confidence"),
-              #gr.outputs.Plot(type="auto",label="Notas"),
-              #gr.outputs.Plot(type="auto",label="Espectro+Notas"),
-              #gr.outputs.Textbox(label="bpm"),
-              #gr.outputs.Textbox(label="partitura"),
-              #gr.outputs.Textbox(type="html",label="partitura1"),
-              #gr.outputs.Audio(label="midi")],
-    interpretation = "default"#,
+    outputs= [gr.outputs.Audio(label="Audio Original"), 
+              gr.outputs.Plot(type="auto",label="Gráfico de Frecuencias"),
+              gr.outputs.Plot(type="auto",label="Especto"),
+              gr.outputs.Plot(type="auto",label="Pitch Confidence"),
+              gr.outputs.Plot(type="auto",label="Notas"),
+              gr.outputs.Plot(type="auto",label="Espectro+Notas"),
+              gr.outputs.Textbox(label="bpm"),
+              gr.outputs.Textbox(label="partitura"),
+              gr.outputs.Textbox(type="html",label="partitura1"),
+              gr.outputs.Audio(label="midi")],
+    interpretation = "default",
 )
 
 iface.launch(debug=True)
