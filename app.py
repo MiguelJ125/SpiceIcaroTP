@@ -100,9 +100,9 @@ def plot_stft(x, sample_rate, show_black_and_white=False):
   return fig
 
 # Loading audio samples from the wav file:
-sample_rate, audio_samples = wavfile.read(converted_audio_file, 'rb')
+#sample_rate, audio_samples = wavfile.read(converted_audio_file, 'rb')
 
-fig = plot_stft(audio_samples / MAX_ABS_INT16 , sample_rate=EXPECTED_SAMPLE_RATE)
+#fig = plot_stft(audio_samples / MAX_ABS_INT16 , sample_rate=EXPECTED_SAMPLE_RATE)
 
 # Executing the Model
 # Loading the SPICE model is easy:
