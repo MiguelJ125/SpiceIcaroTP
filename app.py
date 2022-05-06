@@ -381,11 +381,11 @@ def main(audio):
 
   # At this point, best_notes_and_rests contains the best quantization.
   # Since we don't need to have rests at the beginning, let's remove these:
-  #while best_notes_and_rests[0] == 'Rest':
-  #  best_notes_and_rests = best_notes_and_rests[1:]
+  while best_notes_and_rests[0] == 'Rest':
+    best_notes_and_rests = best_notes_and_rests[1:]
   # Also remove silence at the end.
-  #while best_notes_and_rests[-1] == 'Rest':
-  #  best_notes_and_rests = best_notes_and_rests[:-1]
+  while best_notes_and_rests[-1] == 'Rest':
+    best_notes_and_rests = best_notes_and_rests[:-1]
   
   # ____________________________________________________________________________
   # Now let's write the quantized notes as sheet music score!
@@ -460,7 +460,7 @@ def main(audio):
       return a
 
   # rendering the music score
-  partitura = showScore(sc)
+  ###partitura = showScore(sc)
   #print(best_notes_and_rests)
 
 
@@ -480,8 +480,8 @@ def main(audio):
   # doing that is using Timidity.
 
   #!timidity $converted_audio_file_as_midi -Ow -o $wav_from_created_midi
-
-  return converted_audio_file, fig1, fig2, fig3, fig4,fig5, bpm, best_notes_and_rests, partitura, wav_from_created_midi
+  return converted_audio_file, fig1, fig2, fig3, fig4,fig5, bpm, best_notes_and_rests, wav_from_created_midi
+  #return converted_audio_file, fig1, fig2, fig3, fig4,fig5, bpm, best_notes_and_rests, partitura, wav_from_created_midi
 
 link = "https://www.tensorflow.org/hub/tutorials/spice?hl=es-419&authuser=2"
 
@@ -498,7 +498,7 @@ iface = gr.Interface(
               gr.outputs.Plot(type="auto",label="Espectro+Notas"),
               gr.outputs.Textbox(label="bpm"),
               gr.outputs.Textbox(label="partitura"),
-              gr.outputs.Textbox(type="html",label="partitura1"),
+              #gr.outputs.Textbox(type="html",label="partitura1"),
               gr.outputs.Audio(label="midi")],
     interpretation = "default",
 )
