@@ -497,7 +497,7 @@ iface = gr.Interface(
               gr.outputs.Plot(type="auto",label="Notas"),
               gr.outputs.Plot(type="auto",label="Espectro+Notas"),
               gr.outputs.Textbox(label="bpm"),
-              gr.outputs.Textbox(label="partitura")]#,
+              gr.outputs.Textbox(label="partitura")],#,
               #gr.outputs.Textbox(type="html",label="partitura1"),
               #gr.outputs.Audio(label="midi")],
     interpretation = "default",
