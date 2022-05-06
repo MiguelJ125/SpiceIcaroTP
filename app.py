@@ -470,17 +470,17 @@ def main(audio):
   # To create this file, we can use the stream we created before.
 
   # Saving the recognized musical notes as a MIDI file
-  converted_audio_file_as_midi = converted_audio_file[:-4] + '.mid'
-  fp = sc.write('midi', fp=converted_audio_file_as_midi)
+  ##converted_audio_file_as_midi = converted_audio_file[:-4] + '.mid'
+  ##fp = sc.write('midi', fp=converted_audio_file_as_midi)
 
-  wav_from_created_midi = converted_audio_file_as_midi.replace(' ', '_') + "_midioutput.wav"
+  ##wav_from_created_midi = converted_audio_file_as_midi.replace(' ', '_') + "_midioutput.wav"
   #print(wav_from_created_midi)
 
   # To listen to it on colab, we need to convert it back to wav. An easy way  of 
   # doing that is using Timidity.
 
   #!timidity $converted_audio_file_as_midi -Ow -o $wav_from_created_midi
-  return converted_audio_file, fig1, fig2, fig3, fig4,fig5, bpm, best_notes_and_rests, wav_from_created_midi
+  return converted_audio_file, fig1, fig2, fig3, fig4,fig5, bpm, best_notes_and_rests#, wav_from_created_midi
   #return converted_audio_file, fig1, fig2, fig3, fig4,fig5, bpm, best_notes_and_rests, partitura, wav_from_created_midi
 
 link = "https://www.tensorflow.org/hub/tutorials/spice?hl=es-419&authuser=2"
@@ -499,7 +499,7 @@ iface = gr.Interface(
               gr.outputs.Textbox(label="bpm"),
               gr.outputs.Textbox(label="partitura"),
               #gr.outputs.Textbox(type="html",label="partitura1"),
-              gr.outputs.Audio(label="midi")],
+              #gr.outputs.Audio(label="midi")],
     interpretation = "default",
 )
 
