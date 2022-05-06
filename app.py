@@ -8,13 +8,13 @@ Original file is located at
 """
 
 # Install Gradio
-!pip install gradio -q
+#!pip install gradio -q
 
 # Install timidy
-!sudo apt-get install -q -y timidity libsndfile1
+#!sudo apt-get install -q -y timidity libsndfile1
 
 # All the imports to deal with sound data
-!pip install pydub numba==0.48 librosa music21
+#!pip install pydub numba==0.48 librosa music21
 
 # Import Libraries
 
@@ -57,19 +57,20 @@ logger.setLevel(logging.ERROR)
 # 2.   Use a file saved on Google Drive
 
 # Use a file saved on Google Drive
-INPUT_SOURCE = 'https://storage.googleapis.com/download.tensorflow.org/data/c-scale-metronome.wav'
+#INPUT_SOURCE = 'https://storage.googleapis.com/download.tensorflow.org/data/c-scale-metronome.wav'
 
-!wget --no-check-certificate 'https://storage.googleapis.com/download.tensorflow.org/data/c-scale-metronome.wav' -O c-scale.wav
+#!wget --no-check-certificate 'https://storage.googleapis.com/download.tensorflow.org/data/c-scale-metronome.wav' -O c-scale.wav
 
-uploaded_file_name = 'c-scale.wav'
+#uploaded_file_name = 'c-scale.wav'
 
-uploaded_file_name
+#uploaded_file_name
 
 # Function that converts the user-created audio to the format that the model 
 # expects: bitrate 16kHz and only one channel (mono).
 
 EXPECTED_SAMPLE_RATE = 16000
 
+# Funciones #
 def convert_audio_for_model(user_file, output_file='converted_audio_file.wav'):
   audio = AudioSegment.from_file(user_file)
   audio = audio.set_frame_rate(EXPECTED_SAMPLE_RATE).set_channels(1)
@@ -477,9 +478,9 @@ def main(audio):
   # To listen to it on colab, we need to convert it back to wav. An easy way  of 
   # doing that is using Timidity.
 
-  !timidity $converted_audio_file_as_midi -Ow -o $wav_from_created_midi
+  #!timidity $converted_audio_file_as_midi -Ow -o $wav_from_created_midi
 
-  return converted_audio_file, fig1, fig2, fig3, fig4,fig5, bpm, best_notes_and_rests, partitura, wav_from_created_midi
+  #return converted_audio_file, fig1, fig2, fig3, fig4,fig5, bpm, best_notes_and_rests, partitura, wav_from_created_midi
 
 link = "https://www.tensorflow.org/hub/tutorials/spice?hl=es-419&authuser=2"
 
@@ -498,7 +499,6 @@ iface = gr.Interface(
               gr.outputs.Textbox(label="partitura"),
               gr.outputs.Textbox(type="html",label="partitura1"),
               gr.outputs.Audio(label="midi")],
-    examples=[[uploaded_file_name]],
     interpretation = "default",
 )
 
