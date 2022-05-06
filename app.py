@@ -502,4 +502,4 @@ iface = gr.Interface(
     interpretation = "default",
 )
 
-iface.launch(debug=True)
+iface.launch(debug=True, share= True)
