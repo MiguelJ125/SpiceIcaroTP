@@ -8,13 +8,13 @@ Original file is located at
 """
 
 # Install Gradio
-!pip install gradio -q
+#!pip install gradio -q
 
 # Install timidy
-!sudo apt-get install -q -y timidity libsndfile1
+#!sudo apt-get install -q -y timidity libsndfile1
 
 # All the imports to deal with sound data
-!pip install pydub numba==0.48 librosa music21
+#!pip install pydub numba==0.48 librosa music21
 
 # Import Libraries
 
@@ -57,19 +57,20 @@ logger.setLevel(logging.ERROR)
 # 2.   Use a file saved on Google Drive
 
 # Use a file saved on Google Drive
-INPUT_SOURCE = 'https://storage.googleapis.com/download.tensorflow.org/data/c-scale-metronome.wav'
+#INPUT_SOURCE = 'https://storage.googleapis.com/download.tensorflow.org/data/c-scale-metronome.wav'
 
-!wget --no-check-certificate 'https://storage.googleapis.com/download.tensorflow.org/data/c-scale-metronome.wav' -O c-scale.wav
+#!wget --no-check-certificate 'https://storage.googleapis.com/download.tensorflow.org/data/c-scale-metronome.wav' -O c-scale.wav
 
-uploaded_file_name = 'c-scale.wav'
+#uploaded_file_name = 'c-scale.wav'
 
-uploaded_file_name
+#uploaded_file_name
 
 # Function that converts the user-created audio to the format that the model 
 # expects: bitrate 16kHz and only one channel (mono).
 
 EXPECTED_SAMPLE_RATE = 16000
 
+# Funciones #
 def convert_audio_for_model(user_file, output_file='converted_audio_file.wav'):
   audio = AudioSegment.from_file(user_file)
   audio = audio.set_frame_rate(EXPECTED_SAMPLE_RATE).set_channels(1)
@@ -99,9 +100,9 @@ def plot_stft(x, sample_rate, show_black_and_white=False):
   return fig
 
 # Loading audio samples from the wav file:
-sample_rate, audio_samples = wavfile.read(converted_audio_file, 'rb')
+#sample_rate, audio_samples = wavfile.read(converted_audio_file, 'rb')
 
-fig = plot_stft(audio_samples / MAX_ABS_INT16 , sample_rate=EXPECTED_SAMPLE_RATE)
+#fig = plot_stft(audio_samples / MAX_ABS_INT16 , sample_rate=EXPECTED_SAMPLE_RATE)
 
 # Executing the Model
 # Loading the SPICE model is easy:
@@ -380,11 +381,11 @@ def main(audio):
 
   # At this point, best_notes_and_rests contains the best quantization.
   # Since we don't need to have rests at the beginning, let's remove these:
-  while best_notes_and_rests[0] == 'Rest':
-    best_notes_and_rests = best_notes_and_rests[1:]
+  #while best_notes_and_rests[0] == 'Rest':
+  #  best_notes_and_rests = best_notes_and_rests[1:]
   # Also remove silence at the end.
-  while best_notes_and_rests[-1] == 'Rest':
-    best_notes_and_rests = best_notes_and_rests[:-1]
+  #while best_notes_and_rests[-1] == 'Rest':
+  #  best_notes_and_rests = best_notes_and_rests[:-1]
   
   # ____________________________________________________________________________
   # Now let's write the quantized notes as sheet music score!
@@ -411,7 +412,8 @@ def main(audio):
 
   # @title [Run this] Helper  function to use Open Sheet Music Display (JS code) 
   # to show a music score
-  from IPython.core.display import display, HTML, Javascript
+  from IPython.core.display import  HTML, Javascript
+  from IPython import display
   import json, random
 
   def showScore(score):
@@ -454,11 +456,11 @@ def main(audio):
               );
       })
       """.replace('{{DIV_ID}}',DIV_ID).replace('{{data}}',json.dumps(xml))
-      #display(Javascript(script))
+      display(Javascript(script))
       return a
 
   # rendering the music score
-  partitura = showScore(sc)
+  ###partitura = showScore(sc)
   #print(best_notes_and_rests)
 
 
@@ -468,18 +470,18 @@ def main(audio):
   # To create this file, we can use the stream we created before.
 
   # Saving the recognized musical notes as a MIDI file
-  converted_audio_file_as_midi = converted_audio_file[:-4] + '.mid'
-  fp = sc.write('midi', fp=converted_audio_file_as_midi)
+  ##converted_audio_file_as_midi = converted_audio_file[:-4] + '.mid'
+  ##fp = sc.write('midi', fp=converted_audio_file_as_midi)
 
-  wav_from_created_midi = converted_audio_file_as_midi.replace(' ', '_') + "_midioutput.wav"
+  ##wav_from_created_midi = converted_audio_file_as_midi.replace(' ', '_') + "_midioutput.wav"
   #print(wav_from_created_midi)
 
   # To listen to it on colab, we need to convert it back to wav. An easy way  of 
   # doing that is using Timidity.
 
-  !timidity $converted_audio_file_as_midi -Ow -o $wav_from_created_midi
-
-  return converted_audio_file, fig1, fig2, fig3, fig4,fig5, bpm, best_notes_and_rests, partitura, wav_from_created_midi
+  #!timidity $converted_audio_file_as_midi -Ow -o $wav_from_created_midi
+  return converted_audio_file, fig1, fig2, fig3, fig4,fig5, bpm, best_notes_and_rests#, wav_from_created_midi
+  #return converted_audio_file, fig1, fig2, fig3, fig4,fig5, bpm, best_notes_and_rests, partitura, wav_from_created_midi
 
 link = "https://www.tensorflow.org/hub/tutorials/spice?hl=es-419&authuser=2"
 
@@ -495,10 +497,9 @@ iface = gr.Interface(
               gr.outputs.Plot(type="auto",label="Notas"),
               gr.outputs.Plot(type="auto",label="Espectro+Notas"),
               gr.outputs.Textbox(label="bpm"),
-              gr.outputs.Textbox(label="partitura"),
-              gr.outputs.Textbox(type="html",label="partitura1"),
-              gr.outputs.Audio(label="midi")],
-    examples=[[uploaded_file_name]],
+              gr.outputs.Textbox(label="partitura")],#,
+              #gr.outputs.Textbox(type="html",label="partitura1"),
+              #gr.outputs.Audio(label="midi")],
     interpretation = "default",
 )
 
