@@ -381,11 +381,11 @@ def main(audio):
 
   # At this point, best_notes_and_rests contains the best quantization.
   # Since we don't need to have rests at the beginning, let's remove these:
-  while best_notes_and_rests[0] == 'Rest':
-    best_notes_and_rests = best_notes_and_rests[1:]
+  #while best_notes_and_rests[0] == 'Rest':
+  #  best_notes_and_rests = best_notes_and_rests[1:]
   # Also remove silence at the end.
-  while best_notes_and_rests[-1] == 'Rest':
-    best_notes_and_rests = best_notes_and_rests[:-1]
+  #while best_notes_and_rests[-1] == 'Rest':
+  #  best_notes_and_rests = best_notes_and_rests[:-1]
   
   # ____________________________________________________________________________
   # Now let's write the quantized notes as sheet music score!
