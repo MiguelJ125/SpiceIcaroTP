@@ -480,7 +480,7 @@ def main(audio):
 
   #!timidity $converted_audio_file_as_midi -Ow -o $wav_from_created_midi
 
-  #return converted_audio_file, fig1, fig2, fig3, fig4,fig5, bpm, best_notes_and_rests, partitura, wav_from_created_midi
+  return converted_audio_file, fig1, fig2, fig3, fig4,fig5, bpm, best_notes_and_rests, partitura, wav_from_created_midi
 
 link = "https://www.tensorflow.org/hub/tutorials/spice?hl=es-419&authuser=2"
 
@@ -489,7 +489,7 @@ iface = gr.Interface(
     title= "Trabajo Práctico N°3 - Detección de tono con SPICE",
     description="Implementación de Modelo con GitHub + Hugging Face🤗-- 🔊✅ " + "Basado en: " + link, 
     inputs = [gr.inputs.Audio(source= "microphone" , type="filepath",label="Ingrese Audio")],
-    outputs= [gr.outputs.Audio(label="Audio Original")]#, 
+    outputs= [gr.outputs.Audio(label="Audio Original")], 
               #gr.outputs.Plot(type="auto",label="Gráfico de Frecuencias"),
               #gr.outputs.Plot(type="auto",label="Especto"),
               #gr.outputs.Plot(type="auto",label="Pitch Confidence"),
@@ -499,7 +499,7 @@ iface = gr.Interface(
               #gr.outputs.Textbox(label="partitura"),
               #gr.outputs.Textbox(type="html",label="partitura1"),
               #gr.outputs.Audio(label="midi")],
-    #interpretation = "default",
+    interpretation = "default"#,
 )
 
 iface.launch(debug=True)
