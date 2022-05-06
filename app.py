@@ -412,7 +412,8 @@ def main(audio):
 
   # @title [Run this] Helper  function to use Open Sheet Music Display (JS code) 
   # to show a music score
-  from IPython.core.display import display, HTML, Javascript
+  from IPython.core.display import  HTML, Javascript
+  from IPython import display
   import json, random
 
   def showScore(score):
