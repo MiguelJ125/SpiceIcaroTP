@@ -490,16 +490,16 @@ iface = gr.Interface(
     description="Implementación de Modelo con GitHub + Hugging Face🤗-- 🔊✅ " + "Basado en: " + link, 
     inputs = [gr.inputs.Audio(source= "microphone" , type="filepath",label="Ingrese Audio")],
     outputs= [gr.outputs.Audio(label="Audio Original"), 
-              gr.outputs.Plot(type="auto",label="Gráfico de Frecuencias"),
-              gr.outputs.Plot(type="auto",label="Especto"),
-              gr.outputs.Plot(type="auto",label="Pitch Confidence"),
-              gr.outputs.Plot(type="auto",label="Notas"),
-              gr.outputs.Plot(type="auto",label="Espectro+Notas"),
-              gr.outputs.Textbox(label="bpm"),
-              gr.outputs.Textbox(label="partitura"),
-              gr.outputs.Textbox(type="html",label="partitura1"),
-              gr.outputs.Audio(label="midi")],
+              #gr.outputs.Plot(type="auto",label="Gráfico de Frecuencias"),
+              #gr.outputs.Plot(type="auto",label="Especto"),
+              #gr.outputs.Plot(type="auto",label="Pitch Confidence"),
+              #gr.outputs.Plot(type="auto",label="Notas"),
+              #gr.outputs.Plot(type="auto",label="Espectro+Notas"),
+              #gr.outputs.Textbox(label="bpm"),
+              #gr.outputs.Textbox(label="partitura"),
+              #gr.outputs.Textbox(type="html",label="partitura1"),
+              #gr.outputs.Audio(label="midi")],
     interpretation = "default",
 )
 
-iface.launch(debug=True, share= True)
+iface.launch(debug=True)
