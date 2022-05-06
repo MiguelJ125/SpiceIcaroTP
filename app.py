@@ -422,7 +422,7 @@ def main(audio):
     
   def showMusicXML(xml):
       DIV_ID = "OSMD_div"
-      a = display.HTML('<div id="'+DIV_ID+'">loading OpenSheetMusicDisplay</div>')
+      a = display(HTML('<div id="'+DIV_ID+'">loading OpenSheetMusicDisplay</div>'))
       script = """
       var div_id = {{DIV_ID}};
       function loadOSMD() { 
